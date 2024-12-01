@@ -6,7 +6,7 @@ using System;
 
 public class chartsTEST : MonoBehaviour
 {
-    [SerializeField] LineChart lineChart;
+    public LineChart lineChart;
     [SerializeField] bool isChangeValue;
     [SerializeField] bool isChangeElements;
     public bool isAdddata;
