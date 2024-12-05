@@ -18,22 +18,25 @@ namespace StockGame
     [Serializable]
     public class StockInfo
     {
-        public List<int> stocks;
-        public StockInfo(int amount)
+        public List<int> stocks = new List<int>();
+        public void Update(int newValue,bool isPlus)
         {
-            stocks = new List<int>(amount);
-        }
-        public void Update(int newValue)
-        {
-            for(int i = 0; i < stocks.Count; i++)
+            if(isPlus)
             {
-                if (i == stocks.Count-1)
+                stocks.Add(newValue);
+            }
+            else
+            {
+                for (int i = 0; i < stocks.Count; i++)
                 {
-                    stocks[stocks.Count -1] = newValue;
-                }
-                else
-                {
-                    stocks[i] = stocks[i + 1];
+                    if (i == stocks.Count - 1)
+                    {
+                        stocks[stocks.Count - 1] = newValue;
+                    }
+                    else
+                    {
+                        stocks[i] = stocks[i + 1];
+                    }
                 }
             }
         }

@@ -1,9 +1,11 @@
 using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
+using System.Text;
 using System.Windows.Forms;
 using UnityEngine;
-using UnityEngine.UIElements;
+using UnityEngine.UI;
 
 namespace StockGame
 {
@@ -11,14 +13,16 @@ namespace StockGame
     {
         [SerializeField] chartsTEST charts;
         [SerializeField] string[] brands;
-        [SerializeField] List<NewsInfo> stockInfo = new List<NewsInfo>();//ニュースと変化量のリスト
-        [SerializeField] Toggle read;
+        [SerializeField] List<NewsInfo> newsInfo = new List<NewsInfo>();//ニュースと変化量のリスト
         [SerializeField] int tradingTime;//取引時間
         bool isReadbrands = false;//銘柄を読み込んだか(一回記述用)
         bool isReadInitialStock = false;
-        [SerializeField] int linesCount;//行数
+        [SerializeField] int linesCount = 1;//行数
         [SerializeField] List<StockInfo> stocks = new List<StockInfo>();
         [SerializeField] int[] initialStock;
+        [SerializeField] Text newsMessage;
+        public int maxBrands;//銘柄表示最大数
+        public int updateCount = 0;//OnUpdateNewsが呼ばれた回数
         void Start()
         {
             charts.newValue = 810;
@@ -28,8 +32,34 @@ namespace StockGame
             }
             OnSetData(true);//面倒になったので初期化はstartのみ
         }
+        public void OnUpdateNews()
+        {
+            NewsInfo news = newsInfo[UnityEngine.Random.Range(0, newsInfo.Count)];
+            newsMessage.text = news.news;
+            for (int i = 0;i < brands.Length;i++)
+            {
+                int value = stocks[i].stocks.Last() + news.changeAmount[i];
+                if (updateCount == maxBrands)
+                {
+                    stocks[i].Update(value, false);
+                }
+                else
+                {
+                    stocks[i].Update(value,true);
+                    updateCount++;
+                }
+            }
+            for(int i = 0;i<5;i++)
+            {
+                charts.lineChart.UpdateData(0, i, stocks[0].stocks[i]);
+            }
+        }
+        void OnToogleUpdate(bool isOn)
+        {
+            OnUpdateNews();
+        }
 
-        public void OnSetData(bool isOn)
+        void OnSetData(bool isOn)
         {
             if (isOn)
             {
@@ -37,11 +67,12 @@ namespace StockGame
                 {
                     string path = OSSettings.GetSettingPath();
                     LoadData(path);
-                    stocks = new List<StockInfo>(brands.Length);
                     for(int i = 0;i < brands.Length;i++)
                     {
-                        stocks[i].stocks.Add(initialStock[i]);
-                        charts.lineChart.UpdateData(i, 0, initialStock[i]);
+                        StockInfo stock = new StockInfo();
+                        stock.stocks.Add(initialStock[i]);
+                        stocks.Add(stock);
+                        //charts.lineChart.UpdateData(i, 0, initialStock[i]);
                     }
                 }
                 catch(PathNotException)
@@ -137,21 +168,24 @@ namespace StockGame
                                 int tmp = int.Parse(lines[i]);
                                 temp.changeAmount.Add(tmp);
                             }
-                            catch(NullReferenceException) 
+                            catch (IndexOutOfRangeException)
                             {
-#if UNITY_WEBGL
-                    GUI.Label(new Rect(10, 10, 200, 20), "書式が不正です。場所:" + linesCount + "行目");
-#elif UNITY_STANDALONE_WIN && UNITY_EDITOR
-                                MessageBox.Show("NullReferenceException");
-#endif
+                                OSSettings.DialogShow("要素数が不足しています。場所:" + linesCount + "行", "setting.txt", MessageBoxIcon.Error);
+                            }
+                            catch(ArgumentNullException)
+                            {
+                                OSSettings.DialogShow(",(ｺﾝﾏ)の後には要素を記入してください。場所:" + linesCount + "行","setting.txt",MessageBoxIcon.Error);
+                            }
+                            catch (FormatException)
+                            {
+                                OSSettings.DialogShow("書式が違います。半角数字で記述してください。ｼｽﾃﾑｵｰﾊﾞｰﾌﾛｰも確認してください。場所:" + linesCount + "行", "setting.txt", MessageBoxIcon.Error);
                             }
                             catch(Exception)
                             {
-                                MessageBox.Show("書式が不正です。場所:" + linesCount + "行目");
-                                continue;
+                                OSSettings.DialogShow("よくわからんエラーが出ました。付属のﾌﾟﾛｼﾞｪｸﾄﾌｧｲﾙを見て修正するか開発者にバグの報告をしてください。開発者twitter:@wattzmaro 場所:" + linesCount + "行", "setting.txt", MessageBoxIcon.Error);
                             }
                         }
-                        stockInfo.Add(temp);
+                        newsInfo.Add(temp);
                     }
                 }
             }
