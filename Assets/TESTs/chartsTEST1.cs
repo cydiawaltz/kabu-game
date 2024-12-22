@@ -3,9 +3,8 @@ using XCharts;
 using XCharts.Runtime;
 using TMPro;
 using System;
-using StockGame;
 
-public class chartsTEST : MonoBehaviour
+public class chartsTEST1 : MonoBehaviour
 {
     public LineChart lineChart;
     [SerializeField] bool isChangeValue;
@@ -15,14 +14,12 @@ public class chartsTEST : MonoBehaviour
     public double newValue;
     [SerializeField] double[] oldValues;
     [SerializeField] TMP_InputField field;
-    [SerializeField] ValueChangeTEST valueChange;
-    [SerializeField] int updateTime = 0;//çXêVÇµÇΩâÒêî
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        valueChange = GameObject.FindWithTag("setting").GetComponent<ValueChangeTEST>();
         lineChart.RemoveData();
         lineChart.AddSerie<Line>();
+        TitleSet("test_saitama");
         var xaxis = lineChart.EnsureChartComponent<XAxis>();
         xaxis.splitNumber = 5;
         var yaxis = lineChart.EnsureChartComponent<YAxis>();
@@ -30,20 +27,9 @@ public class chartsTEST : MonoBehaviour
         for (int i = 0;i<5;i++)
         {
             lineChart.AddXAxisData(i + "?");//Xé≤ÇÃóvëf
-            //lineChart.AddData(0,810);
         }
         oldValues = new double[4];
         lineChart.AnimationEnable(false);
-        try
-        {
-            TitleSet(valueChange.brands[int.Parse(gameObject.name)]);
-            lineChart.AddData(0, valueChange.initialStock[int.Parse(gameObject.name)]);
-            updateTime++;
-        }
-        catch
-        {
-            gameObject.SetActive(false);
-        }
     }
 
     // Update is called once per frame
@@ -53,7 +39,6 @@ public class chartsTEST : MonoBehaviour
         {
             //lineChart.AddData(0, 810);//Ç∆ÇËÇ†Ç¶Ç∏ïΩääÇ≈èâä˙âª
             AddData(newValue);
-            updateTime++;
             isAdddata = false;
         }
         if (isChangeValue)
@@ -84,21 +69,6 @@ public class chartsTEST : MonoBehaviour
                 }
             }
             isRepairGraph = false;
-        }
-    }
-    private void LateUpdate()
-    {
-        if(valueChange.isUpdate)
-        {
-            newValue = valueChange.newsInfo[valueChange.newsIndex].changeAmount[int.Parse(gameObject.name)];
-            if(updateTime < 5)
-            {
-                isAdddata = true;
-            }
-            else
-            {
-                isRepairGraph = true;
-            }
         }
     }
     public void AddData(double value)

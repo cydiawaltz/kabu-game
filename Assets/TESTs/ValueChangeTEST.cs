@@ -12,31 +12,33 @@ namespace StockGame
     public class ValueChangeTEST : MonoBehaviour
     {
         [SerializeField] chartsTEST[] charts;
-        [SerializeField] string[] brands;
-        [SerializeField] List<NewsInfo> newsInfo = new List<NewsInfo>();//ニュースと変化量のリスト
+        public string[] brands;
+        public List<NewsInfo> newsInfo = new List<NewsInfo>();//ニュースと変化量のリスト
         [SerializeField] int tradingTime;//取引時間
         bool isReadbrands = false;//銘柄を読み込んだか(一回記述用)
         bool isReadInitialStock = false;
         [SerializeField] int linesCount = 1;//行数
+        public int newsIndex;
         [SerializeField] List<StockInfo> stocks = new List<StockInfo>();
-        [SerializeField] int[] initialStock;
+        public int[] initialStock;
         [SerializeField] Text newsMessage;
         public int maxBrands;//銘柄表示最大数
         public int updateCount = 0;//OnUpdateNewsが呼ばれた回数
-        void Start()
+        public bool isUpdate = false;//データを更新するか
+        void Awake()
         {
-            charts[0].newValue = 810;
-            charts[1].newValue = 810;
+            /*
             for (int i = 0; i < 5; i++)
             {
                 charts[0].AddData(810);
                 charts[1].AddData(810);
-            }
+            }*/
             OnSetData(true);//面倒になったので初期化はstartのみ
         }
         public void OnUpdateNews()
         {
-            NewsInfo news = newsInfo[UnityEngine.Random.Range(0, newsInfo.Count)];
+            newsIndex = UnityEngine.Random.Range(0, newsInfo.Count);
+            NewsInfo news = newsInfo[newsIndex];
             newsMessage.text = news.news;
             for (int i = 0;i < brands.Length;i++)
             {
@@ -51,11 +53,16 @@ namespace StockGame
                     updateCount++;
                 }
             }
-            for(int i = 0;i<5;i++)
+            isUpdate = true;
+            /*for(int i = 0;i<5;i++)
             {
                 charts[0].lineChart.UpdateData(0, i, stocks[0].stocks[i]);
                 charts[1].lineChart.UpdateData(0, i, stocks[0].stocks[i]);
-            }
+            }*/
+        }
+        private void FixedUpdate()
+        {
+            isUpdate = false;
         }
         void OnToogleUpdate(bool isOn)
         {

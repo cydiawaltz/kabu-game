@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_ThemeType: 2
   m_ThemeName: Dark
-  m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+  m_Font: {fileID: 12800000, guid: d34f8bdb33a9079418db230f38f81b03, type: 3}
   m_TMPFont: {fileID: 11400000, guid: e89b4f12b0858dc4dadb9c7dc13c0c42, type: 2}
   m_ContrastColor:
     serializedVersion: 2
