@@ -12,14 +12,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3694d869548264b718bdfc6c8009dcf1, type: 3}
   m_Name: XCSettings
   m_EditorClassIdentifier: 
-  m_Lang: {fileID: 11400000, guid: 79b252423c47d4cf380e489ed55e05d4, type: 2}
+  m_Lang: {fileID: 11400000, guid: cfc5541268f414098950441fd8b6f4a7, type: 2}
   m_Font: {fileID: 12800000, guid: 1752d7ebae278c047a254fd8d0590758, type: 3}
-  m_TMPFont: {fileID: 0}
-  m_FontSizeLv1: 24
-  m_FontSizeLv2: 22
+  m_TMPFont: {fileID: 11400000, guid: e89b4f12b0858dc4dadb9c7dc13c0c42, type: 2}
+  m_FontSizeLv1: 21
+  m_FontSizeLv2: 6
   m_FontSizeLv3: 20
   m_FontSizeLv4: 18
-  m_AxisLineType: 0
+  m_AxisLineType: 1
   m_AxisLineWidth: 0.8
   m_AxisSplitLineType: 0
   m_AxisSplitLineWidth: 0.8
@@ -49,5 +49,5 @@ MonoBehaviour:
   m_CustomThemes:
   - {fileID: 11400000, guid: 289d2fc7f4ce24f73b9ed8ec52639f72, type: 2}
   - {fileID: 11400000, guid: e1dc23a10de1e4c5dbfbaf74c4dfd218, type: 2}
-  - {fileID: 11400000, guid: f917f38ce737f4563a377883dccaff8f, type: 2}
-  - {fileID: 11400000, guid: 376d15d5e9b694d75965c837a0fe1222, type: 2}
+  - {fileID: 0}
+  - {fileID: 0}

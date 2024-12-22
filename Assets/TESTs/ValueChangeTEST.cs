@@ -11,7 +11,7 @@ namespace StockGame
 {
     public class ValueChangeTEST : MonoBehaviour
     {
-        [SerializeField] chartsTEST charts;
+        [SerializeField] chartsTEST[] charts;
         [SerializeField] string[] brands;
         [SerializeField] List<NewsInfo> newsInfo = new List<NewsInfo>();//ニュースと変化量のリスト
         [SerializeField] int tradingTime;//取引時間
@@ -25,10 +25,12 @@ namespace StockGame
         public int updateCount = 0;//OnUpdateNewsが呼ばれた回数
         void Start()
         {
-            charts.newValue = 810;
+            charts[0].newValue = 810;
+            charts[1].newValue = 810;
             for (int i = 0; i < 5; i++)
             {
-                charts.AddData(810);
+                charts[0].AddData(810);
+                charts[1].AddData(810);
             }
             OnSetData(true);//面倒になったので初期化はstartのみ
         }
@@ -51,7 +53,8 @@ namespace StockGame
             }
             for(int i = 0;i<5;i++)
             {
-                charts.lineChart.UpdateData(0, i, stocks[0].stocks[i]);
+                charts[0].lineChart.UpdateData(0, i, stocks[0].stocks[i]);
+                charts[1].lineChart.UpdateData(0, i, stocks[0].stocks[i]);
             }
         }
         void OnToogleUpdate(bool isOn)
@@ -99,7 +102,7 @@ namespace StockGame
                         if (line == null)
                         {
                             // ファイルの終端
-                            MessageBox.Show("line end");
+                            //MessageBox.Show("line end");
                             break;
                         }
 
@@ -115,7 +118,7 @@ namespace StockGame
                             if(!isReadbrands)
                             {
                                 // 銘柄名の読み取り
-                                MessageBox.Show("銘柄名読み込みさいたま");
+                                //MessageBox.Show("銘柄名読み込みさいたま");
                                 line = line.Remove(0, 11); // 「BrandsName: 」を削除
                                 string[] tmp_Brands = line.Split(',');
                                 brands = new string[tmp_Brands.Length];
@@ -135,7 +138,7 @@ namespace StockGame
                         {
                             try
                             {
-                                MessageBox.Show("イニシャルストックを読み込み");
+                                //MessageBox.Show("イニシャルストックを読み込み");
                                 line = line.Remove(0, 13);
                                 string[] tmp_start = line.Split(",");
                                 initialStock = new int[tmp_start.Length];

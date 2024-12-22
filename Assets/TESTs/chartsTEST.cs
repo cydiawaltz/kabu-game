@@ -78,7 +78,7 @@ public class chartsTEST : MonoBehaviour
     void TitleSet(string title)
     {
         lineChart.EnsureChartComponent<Title>().text = title;
-        lineChart.SetSize(300, 200);
+        //lineChart.SetSize(300, 200);
     }
     public void onClick()
     {

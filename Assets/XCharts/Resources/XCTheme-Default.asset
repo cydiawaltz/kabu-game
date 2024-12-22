@@ -3,8 +3,9 @@
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
@@ -14,6 +15,7 @@ MonoBehaviour:
   m_ThemeType: 0
   m_ThemeName: Default
   m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+  m_TMPFont: {fileID: 11400000, guid: e89b4f12b0858dc4dadb9c7dc13c0c42, type: 2}
   m_ContrastColor:
     serializedVersion: 2
     rgba: 0
@@ -44,27 +46,32 @@ MonoBehaviour:
     m_TextColor: {r: 0.31764707, g: 0.3019608, b: 0.3019608, a: 1}
     m_TextBackgroundColor: {r: 0, g: 0, b: 0, a: 0}
     m_FontSize: 20
+    m_TMPFont: {fileID: 0}
   m_Title:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
     m_TextColor: {r: 0.31764707, g: 0.3019608, b: 0.3019608, a: 1}
     m_TextBackgroundColor: {r: 0, g: 0, b: 0, a: 0}
     m_FontSize: 24
+    m_TMPFont: {fileID: 0}
   m_SubTitle:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
     m_TextColor: {r: 0.5882353, g: 0.5882353, b: 0.5882353, a: 1}
     m_TextBackgroundColor: {r: 0, g: 0, b: 0, a: 0}
     m_FontSize: 22
+    m_TMPFont: {fileID: 0}
   m_Legend:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
     m_TextColor: {r: 0.31764707, g: 0.3019608, b: 0.3019608, a: 1}
     m_TextBackgroundColor: {r: 0, g: 0, b: 0, a: 0}
     m_FontSize: 20
+    m_TMPFont: {fileID: 0}
     m_UnableColor: {r: 0.8, g: 0.8, b: 0.8, a: 1}
   m_Axis:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
     m_TextColor: {r: 0.31764707, g: 0.3019608, b: 0.3019608, a: 1}
     m_TextBackgroundColor: {r: 0, g: 0, b: 0, a: 0}
     m_FontSize: 18
+    m_TMPFont: {fileID: 0}
     m_LineType: 0
     m_LineWidth: 0.8
     m_LineLength: 0
@@ -77,6 +84,9 @@ MonoBehaviour:
     m_SplitLineColor:
       serializedVersion: 2
       rgba: 542200145
+    m_MinorSplitLineColor:
+      serializedVersion: 2
+      rgba: 0
     m_TickWidth: 0.8
     m_TickLength: 5
     m_TickColor:
@@ -92,6 +102,7 @@ MonoBehaviour:
     m_TextColor: {r: 0, g: 0, b: 0, a: 1}
     m_TextBackgroundColor: {r: 1, g: 1, b: 1, a: 1}
     m_FontSize: 20
+    m_TMPFont: {fileID: 0}
     m_LineType: 0
     m_LineWidth: 0.8
     m_LineColor:
@@ -111,6 +122,7 @@ MonoBehaviour:
     m_TextColor: {r: 0.2, g: 0.2, b: 0.2, a: 1}
     m_TextBackgroundColor: {r: 0, g: 0, b: 0, a: 0}
     m_FontSize: 20
+    m_TMPFont: {fileID: 0}
     m_BorderWidth: 0.5
     m_DataLineWidth: 0.5
     m_FillerColor:
@@ -133,6 +145,7 @@ MonoBehaviour:
     m_TextColor: {r: 0.2, g: 0.2, b: 0.2, a: 1}
     m_TextBackgroundColor: {r: 0, g: 0, b: 0, a: 0}
     m_FontSize: 18
+    m_TMPFont: {fileID: 0}
     m_BorderWidth: 0
     m_BorderColor:
       serializedVersion: 2
