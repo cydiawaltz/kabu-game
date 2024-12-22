@@ -34,6 +34,8 @@ namespace StockGame
         }
         public static void DialogShow(string message, string title, MessageBoxIcon icon)
         {
+            MessageBox.Show(message, title, MessageBoxButtons.OK, icon);
+            /*
 #if UNITY_STANDALONE_WIN && UNITY_EDITOR
             MessageBox.Show(message, title, MessageBoxButtons.OK, icon);
 #elif UNITY_STANDALONE_OSX
@@ -97,14 +99,14 @@ namespace StockGame
             default:
                 Debug.Log("予期しない結果: " + response);
                 break;
+        }*/
         }
-    }
-#else
+            
+/*#else
         public static void ShowMacWarning(string title, string message)
         {
 
-        }
-#endif
+        }*/
     }
     class PathNotException : Exception
     {
