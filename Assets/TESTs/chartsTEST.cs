@@ -18,6 +18,10 @@ public class chartsTEST : MonoBehaviour
     [SerializeField] ValueChangeTEST valueChange;
     [SerializeField] int updateTime = 0;//çXêVÇµÇΩâÒêî
     // Start is called once before the first execution of Update after the MonoBehaviour is created
+    private void Awake()
+    {
+        lineChart.enabled = true;
+    }
     void Start()
     {
         valueChange = GameObject.FindWithTag("setting").GetComponent<ValueChangeTEST>();
@@ -83,15 +87,13 @@ public class chartsTEST : MonoBehaviour
                     lineChart.UpdateData(0, i, newValue);
                 }
             }
+            updateTime++;
             isRepairGraph = false;
         }
-    }
-    private void LateUpdate()
-    {
-        if(valueChange.isUpdate)
+        if (valueChange.isUpdate)
         {
             newValue = valueChange.newsInfo[valueChange.newsIndex].changeAmount[int.Parse(gameObject.name)];
-            if(updateTime < 5)
+            if (updateTime < 5)
             {
                 isAdddata = true;
             }
@@ -101,6 +103,7 @@ public class chartsTEST : MonoBehaviour
             }
         }
     }
+
     public void AddData(double value)
     {
         lineChart.AddData(0, value);

@@ -579,23 +579,23 @@ PlayerSettings:
   webGLCloseOnQuit: 0
   webWasm2023: 0
   scriptingDefineSymbols:
-    Android: dUI_TextMeshPro;INPUT_SYSTEM_ENABLED
-    EmbeddedLinux: dUI_TextMeshPro;INPUT_SYSTEM_ENABLED
-    GameCoreScarlett: dUI_TextMeshPro;INPUT_SYSTEM_ENABLED
-    GameCoreXboxOne: dUI_TextMeshPro;INPUT_SYSTEM_ENABLED
-    LinuxHeadlessSimulation: dUI_TextMeshPro;INPUT_SYSTEM_ENABLED
-    Nintendo Switch: dUI_TextMeshPro;INPUT_SYSTEM_ENABLED
-    PS4: dUI_TextMeshPro;INPUT_SYSTEM_ENABLED
-    PS5: dUI_TextMeshPro;INPUT_SYSTEM_ENABLED
-    QNX: dUI_TextMeshPro;INPUT_SYSTEM_ENABLED
-    ReservedCFE: dUI_TextMeshPro;INPUT_SYSTEM_ENABLED
-    Standalone: dUI_TextMeshPro;INPUT_SYSTEM_ENABLED
-    VisionOS: dUI_TextMeshPro;INPUT_SYSTEM_ENABLED
-    WebGL: dUI_TextMeshPro;INPUT_SYSTEM_ENABLED
-    Windows Store Apps: dUI_TextMeshPro;INPUT_SYSTEM_ENABLED
-    XboxOne: dUI_TextMeshPro;INPUT_SYSTEM_ENABLED
-    iPhone: dUI_TextMeshPro;INPUT_SYSTEM_ENABLED
-    tvOS: dUI_TextMeshPro;INPUT_SYSTEM_ENABLED
+    Android: INPUT_SYSTEM_ENABLED
+    EmbeddedLinux: INPUT_SYSTEM_ENABLED
+    GameCoreScarlett: INPUT_SYSTEM_ENABLED
+    GameCoreXboxOne: INPUT_SYSTEM_ENABLED
+    LinuxHeadlessSimulation: INPUT_SYSTEM_ENABLED
+    Nintendo Switch: INPUT_SYSTEM_ENABLED
+    PS4: INPUT_SYSTEM_ENABLED
+    PS5: INPUT_SYSTEM_ENABLED
+    QNX: INPUT_SYSTEM_ENABLED
+    ReservedCFE: INPUT_SYSTEM_ENABLED
+    Standalone: INPUT_SYSTEM_ENABLED
+    VisionOS: INPUT_SYSTEM_ENABLED
+    WebGL: INPUT_SYSTEM_ENABLED
+    Windows Store Apps: INPUT_SYSTEM_ENABLED
+    XboxOne: INPUT_SYSTEM_ENABLED
+    iPhone: INPUT_SYSTEM_ENABLED
+    tvOS: INPUT_SYSTEM_ENABLED
   additionalCompilerArguments: {}
   platformArchitecture: {}
   scriptingBackend:

@@ -25,6 +25,7 @@ namespace StockGame
         public int maxBrands;//銘柄表示最大数
         public int updateCount = 0;//OnUpdateNewsが呼ばれた回数
         public bool isUpdate = false;//データを更新するか
+        [SerializeField] bool isButtonPushed = false;//UpdateとFixUpdateの呼び出しの関係
         void Awake()
         {
             /*
@@ -62,11 +63,19 @@ namespace StockGame
         }
         private void FixedUpdate()
         {
+            if(isButtonPushed)
+            {
+                OnUpdateNews();
+                isButtonPushed = false;
+            }
+        }
+        private void LateUpdate()
+        {
             isUpdate = false;
         }
-        void OnToogleUpdate(bool isOn)
+        public void OnToogleUpdate()
         {
-            OnUpdateNews();
+            isButtonPushed = true;
         }
 
         void OnSetData(bool isOn)
