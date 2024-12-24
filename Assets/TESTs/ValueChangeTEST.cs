@@ -1,9 +1,11 @@
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -26,6 +28,8 @@ namespace StockGame
         public int updateCount = 0;//OnUpdateNewsが呼ばれた回数
         public bool isUpdate = false;//データを更新するか
         [SerializeField] bool isButtonPushed = false;//UpdateとFixUpdateの呼び出しの関係
+        [SerializeField] int waitSeconds;
+        [SerializeField] TMP_InputField field;//ここは暫定機能
         void Awake()
         {
             /*
@@ -35,6 +39,7 @@ namespace StockGame
                 charts[1].AddData(810);
             }*/
             OnSetData(true);//面倒になったので初期化はstartのみ
+            StartCoroutine(UpdateStock());
         }
         public void OnUpdateNews()
         {
@@ -76,6 +81,18 @@ namespace StockGame
         public void OnToogleUpdate()
         {
             isButtonPushed = true;
+        }
+        public void OnChangeValue()
+        {
+            waitSeconds = int.Parse(field.text);
+        }
+        IEnumerator UpdateStock()
+        {
+            while(true)
+            {
+                isButtonPushed = true;
+                yield return new WaitForSeconds(waitSeconds);
+            }
         }
 
         void OnSetData(bool isOn)
@@ -171,6 +188,27 @@ namespace StockGame
                             catch(Exception)
                             {
                                 OSSettings.DialogShow("InitialStockの書式が間違っているか、Int32型のオーバーフローです。","setting.txt",MessageBoxIcon.Stop);
+                            }
+                            continue;
+                        }
+                        if(line.StartsWith("TradingTime:"))
+                        {
+                            try
+                            {
+                                line = line.Remove(0, 12);
+                                waitSeconds = int.Parse(line);
+                            }
+                            catch(ArgumentException)
+                            {
+                                OSSettings.DialogShow("TradingTime:の後に値を入力してください", "setting.txt", MessageBoxIcon.Stop);
+                            }
+                            catch(FormatException)
+                            {
+                                OSSettings.DialogShow("TradingTimeの書式が違います。TradingTimeは自然数である必要があります。", "setting.txt", MessageBoxIcon.Error);
+                            }
+                            catch(OverflowException)
+                            {
+                                OSSettings.DialogShow("Int32型のｵｰﾊﾞｰﾌﾛｰです。要素:TradingTime", "setting.txt", MessageBoxIcon.Error);
                             }
                             continue;
                         }
