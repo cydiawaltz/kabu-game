@@ -17,11 +17,11 @@ namespace StockGame
 #if UNITY_EDITOR
                 path = Path.Combine(UnityEngine.Application.dataPath + "/EditorTEST/setting.txt");
 #elif UNITY_STANDALONE_WIN
-            path = Path.Combine(Application.dataPath + "../Settings/setting.txt");
+            path = Path.Combine(UnityEngine.Application.dataPath , "../Settings/setting.txt");
 #elif UNITY_STANDALONE_OSX
-            path = Path.Combine(Application.dataPath + "../../Settings/setting.txt");
+            path = Path.Combine(UnityEngine.Application.dataPath , "../Settings/setting.txt");
 #elif UNITY_WEBGL//WEBGLでは設定固定？(サーバーから読み出してターゲットのtxtを自動作成？)
-            path = Path.Combine(Application.streamingAssetsPath + "/setting.txt");
+            path = Path.Combine(UnityEngine.Application.streamingAssetsPath , "/setting.txt");
 #endif
                 return path;
             }

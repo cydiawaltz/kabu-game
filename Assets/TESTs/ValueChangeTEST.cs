@@ -115,10 +115,10 @@ namespace StockGame
                 {
                     OSSettings.DialogShow("ｽﾄﾘｰﾑﾘｰﾀﾞｰまたはパスが有効な値ではありません","致命的なエラー",MessageBoxIcon.Hand);
                 }
-                catch(Exception)
+                /*catch(Exception)
                 {
                     OSSettings.DialogShow("更新するグラフがありません","setting.txt",MessageBoxIcon.Warning);
-                }
+                }*/
             }
         }
         void LoadData(string path)

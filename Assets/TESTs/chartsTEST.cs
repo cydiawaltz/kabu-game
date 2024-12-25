@@ -17,6 +17,7 @@ public class chartsTEST : MonoBehaviour
     [SerializeField] TMP_InputField field;
     [SerializeField] ValueChangeTEST valueChange;
     [SerializeField] int updateTime = 0;//XV‚µ‚½‰ñ”
+    [SerializeField] TMP_Text text;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     private void Awake()
     {
@@ -57,6 +58,7 @@ public class chartsTEST : MonoBehaviour
         {
             //lineChart.AddData(0, 810);//‚Æ‚è‚ ‚¦‚¸•½ŠŠ‚Å‰Šú‰»
             AddData(newValue);
+            text.text = "Š”‰¿:"+newValue.ToString();
             updateTime++;
             isAdddata = false;
         }
@@ -87,6 +89,7 @@ public class chartsTEST : MonoBehaviour
                     lineChart.UpdateData(0, i, newValue);
                 }
             }
+            text.text = "Š”‰¿:"+newValue.ToString();
             updateTime++;
             isRepairGraph = false;
         }
